@@ -1,98 +1,83 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import InfoBox from '../components/InfoBox';
+import Footer from '../components/footer';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
 
-export default function HomeScreen() {
+export default function Index() {
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+    <ScrollView style={styles.container}>
+      <Text style={styles.text}>Welcome to</Text>
+      <Text style={styles.shadowedText}>GG. App</Text>
+      <Text style={styles.paragraph}>A Gutz Gym Paranaque City App.</Text>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+      <View style={styles.section}>
+        <InfoBox title='Physique Check⚡' description='Helps you get motivated by seeing your physique.' />
+        <InfoBox title='Workout Planner📔' description='Helps you track your REPS and SETS. Even your next work out.'/>
+      </View>
+
+      <TouchableOpacity style={styles.getStartedButton}>
+            <Text style={styles.buttonText}>Get Started</Text>
+      </TouchableOpacity>
+
+      
+      <Footer title='About Us..' description='Gutz Gym Paranaque is one of the OG Bakal Gym. The hardcore, The Weights.' />
+      <Footer title='Help Us..' description='Express your support by following our social media accounts.' />
+      <Footer title='Why Us..' description='We offer you the best HARDCORE GYM.' />
+
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  container: {
+    flex: 1,
+    backgroundColor: '#000000',
+    padding: 20,
+    flexDirection:'column'
+    
+  },
+
+   text: {
+    color: '#fff',
+    fontWeight: '200',
+    fontSize: 40,
+  },
+   
+
+  shadowedText: {
+    paddingTop:20,
+    fontSize: 80,
+    fontWeight: 'bold',
+    color: '#fff',
+    lineHeight:70
+  },
+
+  paragraph: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight:400
+  },
+
+  getStartedButton: {
+    backgroundColor: '#1E201E',
+    borderRadius: 8,
+    padding: 20,
+    marginTop:15,
     alignItems: 'center',
-    gap: 8,
+    justifyContent:'center',
+    maxWidth:200
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+
+  buttonText: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
+
+  section: {
+    flex: 1,
+    flexDirection:'row'
+  }
+
+
 });

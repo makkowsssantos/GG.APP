@@ -1,35 +1,64 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
-import React from 'react';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
+<Tabs
+  screenOptions={{
+    tabBarActiveTintColor: '#fff',
+    headerStyle: {
+      backgroundColor: '#000000',
+    },
+    headerShadowVisible: false,
+    headerTintColor: '#fff',
+    tabBarStyle: {
+    backgroundColor: '#000000',
+    },
+  }}
+>
+
       <Tabs.Screen
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24}  />
+          ),
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="workout"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          title: 'Planner',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'barbell-outline' : 'barbell-outline'} color="#ebff33ff" size={24}/>
+          ),
         }}
       />
+
+        <Tabs.Screen
+        name="camera"
+        options={{
+          title: 'Physique Check',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'flash' : 'flash-outline'} color="#FFE52A" size={24}/>
+          ),
+        }}
+      />
+
+        <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Dashboard',
+          tabBarIcon: ({ color, focused }) => (
+            <Ionicons name={focused ? 'flash' : 'flash-outline'} color="#FFE52A" size={24}/>
+          ),
+        }}
+      />
+      
     </Tabs>
+
+    
   );
 }
