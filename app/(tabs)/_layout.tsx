@@ -22,6 +22,8 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
+          headerShown: false,
+          tabBarStyle:{ display:'none'},
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'home-sharp' : 'home-outline'} color={color} size={24}  />
           ),
@@ -30,7 +32,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="workout"
         options={{
-          title: 'Planner',
+          title: 'Workout Planner',
           tabBarIcon: ({ color, focused }) => (
             <Ionicons name={focused ? 'barbell-outline' : 'barbell-outline'} color="#ebff33ff" size={24}/>
           ),
@@ -48,14 +50,17 @@ export default function TabLayout() {
       />
 
         <Tabs.Screen
-        name="profile"
+        name="loginPage"
         options={{
-          title: 'Dashboard',
+          title: 'Profile',
+          headerShown: false,
+          tabBarStyle:{ display:'none'},
           tabBarIcon: ({ color, focused }) => (
-            <Ionicons name={focused ? 'flash' : 'flash-outline'} color="#FFE52A" size={24}/>
+            <Ionicons name={focused ? 'person' : 'person-outline'} color="#FFE52A" size={24}/>
           ),
         }}
       />
+      
       
     </Tabs>
 

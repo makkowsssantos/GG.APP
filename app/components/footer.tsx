@@ -19,13 +19,10 @@ export default function footer({title, description}: FooterProps) {
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
-        flexDirection: 'column'
     }, 
 
     textBox: {
         marginTop:50,
-        flexDirection: 'column',
         gap:10
     },
 

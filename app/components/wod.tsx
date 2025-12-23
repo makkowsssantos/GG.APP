@@ -1,20 +1,20 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-type InfoBoxProps = {
+type WodProps = {
     title: string;
     description: string;
 };
 
-export default function InfoBox({title, description}: InfoBoxProps) {
-  return (
-      <View style={styles.box}>
-          <View style={styles.infobox}>
+export default function Wod({ title, description }: WodProps) {
+    return (
+        <View style={styles.box}>
+            <View style={styles.infobox}>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.description}>{description}</Text>
-              </View>
-    </View>
-  );
+            </View>
+        </View>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -34,10 +34,11 @@ const styles = StyleSheet.create({
     },
 
     infobox: {
-    backgroundColor: '#333',
+    backgroundColor: '#000',
     padding: 25,
     borderRadius: 8,
     marginVertical: 10,
-    maxWidth:180
+    maxWidth:180,
+    
     },
 });

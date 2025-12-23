@@ -1,10 +1,14 @@
+import { useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import InfoBox from '../components/InfoBox';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import Footer from '../components/footer';
-
+import InfoBox from '../components/InfoBox';
+import Membership from '../components/membership';
 
 export default function Index() {
+  const router = useRouter();
   return (
+    <SafeAreaView style={{flex:1, backgroundColor:'#000'}}>
     <ScrollView style={styles.container}>
       <Text style={styles.text}>Welcome to</Text>
       <Text style={styles.shadowedText}>GG. App</Text>
@@ -13,18 +17,30 @@ export default function Index() {
       <View style={styles.section}>
         <InfoBox title='Physique Check⚡' description='Helps you get motivated by seeing your physique.' />
         <InfoBox title='Workout Planner📔' description='Helps you track your REPS and SETS. Even your next work out.'/>
+        </View>
+        
+      <View style={styles.logsection}>
+      <TouchableOpacity onPress={() =>router.push('/(auth)/login')} style={styles.getStartedButton}>
+        <Text style={styles.buttonText}>LogIn</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity onPress={() =>router.push('/(tabs)/workout')} style={styles.getStartedButton}>
+        <Text style={styles.buttonText}>Continue</Text>
+          </TouchableOpacity>
+          </View>
+
+
+      <Text style={styles.header}>Enroll now with our Promos</Text>
+      <View style={styles.enrollSection}>
+      <Membership title='Student Promo' description='₱50 per Session & ₱500 per Monthly' />
+        <Membership title='Regular Enroll' description='₱60 per Session & ₱600 per Monthly' />
       </View>
-
-      <TouchableOpacity style={styles.getStartedButton}>
-            <Text style={styles.buttonText}>Get Started</Text>
-      </TouchableOpacity>
-
       
-      <Footer title='About Us..' description='Gutz Gym Paranaque is one of the OG Bakal Gym. The hardcore, The Weights.' />
-      <Footer title='Help Us..' description='Express your support by following our social media accounts.' />
-      <Footer title='Why Us..' description='We offer you the best HARDCORE GYM.' />
-
-    </ScrollView>
+      <View style={styles.footerSection}>
+        <Footer title='GG.App' description='All rights reserved'/>
+      </View>
+      </ScrollView>
+      </SafeAreaView>
   );
 }
 
@@ -36,6 +52,20 @@ const styles = StyleSheet.create({
     flexDirection:'column'
     
   },
+
+  logsection: {
+    flex: 1,
+    flexDirection: 'row',
+    gap:10
+  },
+
+  header: {
+        fontSize: 30,
+        color: '#fff',
+        fontWeight: 500,
+        textAlign: 'center',
+        marginTop:50
+    },
 
    text: {
     color: '#fff',
@@ -65,7 +95,7 @@ const styles = StyleSheet.create({
     marginTop:15,
     alignItems: 'center',
     justifyContent:'center',
-    maxWidth:200
+    maxWidth: 200,
   },
 
   buttonText: {
@@ -77,7 +107,17 @@ const styles = StyleSheet.create({
   section: {
     flex: 1,
     flexDirection:'row'
-  }
+  },
 
+  enrollSection: {
+    flex: 1,
+    flexDirection:'row'
+  },
+
+  footerSection: {
+    flex: 1,
+    textAlign: 'center',
+    justifyContent:'center'
+  }
 
 });
